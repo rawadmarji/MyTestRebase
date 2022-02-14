@@ -1,7 +1,10 @@
 # MyTestRebase
 One line from local as test push
+One line from repo to test fetch
 <<<<<<< HEAD
 one another from local repo before fetch
+One like from remote for rebasing
 =======
-One line from repo to test fetch
->>>>>>> origin
+one another from local repo before fetch	
+git rebase from local
+>>>>>>> 6c616b2 (rebase local)
