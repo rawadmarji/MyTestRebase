@@ -1,0 +1,6 @@
+2 entries in stage.payroll_bp having same pay_period_end
+left join 
+stage.expenditure_bp on employee_id and batch_id and expenditure_bp.timesheet_end=payroll_bp.pay_period_end
+will create 2 entries with different pay_date so we will have 2 hashvalues with same timeentry_id
+which will cause that the timeentry_id will be sent in the output file to them
+as in our ods_data.expenditure we have one record with one hash value and in the source we have 2 records with different hashvalue
