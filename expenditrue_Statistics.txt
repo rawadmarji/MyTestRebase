@@ -1,0 +1,17 @@
+with f as (
+select hashvalue ,timeentry_id,count(*) from stage.expenditure_files ef where isvalid =1 group by hashvalue ,timeentry_id) 
+--select distinct * from stage.expenditure_files ef2 where timeentry_id ='5508545934002' and hashvalue ='x0000936ce2d4e3a38bf0dd57eeede4ec'
+select count(*) from f left join 
+(select hashvalue ,timeentry_id,count(*) from ods_data.expenditure e2   group by hashvalue ,timeentry_id) as a
+on ( f.hashvalue =a.hashvalue and f.timeentry_id = a.timeentry_id )
+where a.hashvalue is null  and a.timeentry_id is null
+select isvalid ,delta , * from stage.expenditure_files ef2  
+where timeentry_id ='3310685837639' and hashvalue ='x0753f37e0082308ec8db7a604d3f52c0'
+select count(*) from (select hashvalue ,timeentry_id  from ods_data.expenditure e2 group by hashvalue ,timeentry_id ) as f
+select count(*) from(
+select count(*), consnum,planid,outcomenumber,servicenumber,dateofservice,procedurecode,serviceunit,unitcost,providername,totalserviceunitcost,unittype,servicedeliverydesc,panumber,authstart,authend,fein,providerphysicaladdress,providerphysicalcity,providerphysicalstate,providerphysicalzip,providermailingaddress,providermailingcity,providermailingstate,providermailingzip,providercontact,provideremail,datepaid,paidmethod,paiddescription,claimid,originalclaimid,wages,timeentry_id
+from ods_data.expenditure group by 
+consnum,planid,outcomenumber,servicenumber,dateofservice,procedurecode,serviceunit,unitcost,providername,totalserviceunitcost,
+unittype,servicedeliverydesc,panumber,authstart,authend,fein,providerphysicaladdress,providerphysicalcity,
+providerphysicalstate,providerphysicalzip,providermailingaddress,providermailingcity,providermailingstate,providermailingzip,
+providercontact,provideremail,datepaid,paidmethod,paiddescription,claimid,originalclaimid,wages,timeentry_id) as d
