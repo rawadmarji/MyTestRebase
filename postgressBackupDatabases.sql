@@ -1,0 +1,1 @@
+pg_dump.exe --verbose --host=localhost --port=5432 --username=postgres --format=p --encoding=UTF-8 --inserts --file C:\Users\rawad\dump-StressTest-202204070618-All_2.sql -n "ods_data" -n "public" -n "stage" dogs
